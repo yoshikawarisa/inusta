@@ -44,4 +44,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function posts()  //適当につけた
+    {
+        return $this->hasMany(post::class);  //hasMany 子をたくさん持っている
+    }
 }
