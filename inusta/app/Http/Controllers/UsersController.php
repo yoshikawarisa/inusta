@@ -11,7 +11,8 @@ class UsersController extends Controller
 {
     public function index()   //画面を出します(表示のみ)
     {
-        return view('users.index');
+        $user = Auth::user();
+        return view('users.index', compact('user'));
     }
 
     public function create()   //画面を出します(表示のみ)
@@ -35,6 +36,33 @@ class UsersController extends Controller
 
         return redirect('/');
     }
+
+    public function edit()   //画面を出します(表示のみ)
+    {
+        $user = Auth::user();
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        if(!empty($validatedData['password'])) {
+            $validatedData['password'] = Hash::make($validatedData['password']);
+        } else {
+            unset($validatedData['password']);
+        }
+
+        $user->update($validatedData);
+        return redirect()->route('users.index');
+    }
+
 
     public function loginForm()   //ログインフォームを出します(表示のみ)
     {
