@@ -8,8 +8,11 @@
 </head>
 
 <body>
-    @if(Auth::check())
-        <span>ようこそ、{{ Auth::user()->name }}さん</span>
-    @endif
+    <h1>inusta</h1>
+    <span>ようこそ、{{ Auth::user()->name }}さん</span>
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit">ログアウト</button>
+    </form>
 </body>
 </html>

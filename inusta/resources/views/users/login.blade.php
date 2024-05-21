@@ -24,5 +24,6 @@
             <button type="submit">ログイン</button>
         </div>
     </form>
+    <button><a href="{{route('users.create')}}">新規ユーザーはこちらから！</a></button>
 </body>
 </html>
