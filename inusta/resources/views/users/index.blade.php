@@ -9,7 +9,7 @@
 
 <body>
     <h1>inusta</h1>
-    <span>ようこそ、{{ Auth::user()->name }}さん</span>
+    <span>ようこそ、<a href="{{ route('users.edit', $user->id) }}">{{ Auth::user()->name }}</a>さん</span>
     <form action="{{ route('logout') }}" method="POST">
         @csrf
         <button type="submit">ログアウト</button>
