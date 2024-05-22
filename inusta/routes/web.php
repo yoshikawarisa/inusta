@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
-
+use App\Http\Controllers\DogsController;
 
 Route::get('/', [UsersController::class, 'index'])->name('users.index');  //登録の画面の話
 Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');  //登録の画面の話
@@ -12,3 +12,5 @@ Route::put('/users', [UsersController::class, 'update'])->name('users.update'); 
 Route::get('/login', [UsersController::class, 'loginForm'])->name('login');
 Route::post('/login', [UsersController::class, 'login'])->name('users.login'); 
 Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
+
+Route::get('/dogs/index', [DogsController::class, 'index'])->name('dogs.index'); //犬一覧
