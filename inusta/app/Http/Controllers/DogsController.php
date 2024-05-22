@@ -15,5 +15,33 @@ class DogsController extends Controller
         // 取得したデータをビューに渡して表示
         return view('dogs.index', ['dogs' => $dogs]);
     }
-}
 
+    public function create()   //画面を出します(表示のみ)
+    {
+        return view('dogs.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'gender' => 'required|string',
+            'age' => 'required|integer',
+            'personality' => 'required|string|max:255',
+            'breed' => 'required|string|max:255',
+            'icon' => 'required|image|max:2048',
+        ]);
+
+        $dog = Dog::create([
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'age' => $request->age,
+            'user_id' => auth()->id(),
+            'personality' => $request->personality,
+            'breed' => $request->breed,
+            'icon' => $request->file('icon') ? $request->file('icon')->store('dogs','public') : null,
+        ]);
+
+        return redirect()->route('dogs.index');
+    }
+}
