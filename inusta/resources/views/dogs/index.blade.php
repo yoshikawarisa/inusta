@@ -11,7 +11,7 @@
     <h2>My Dogs</h2>
     <ul>
         @foreach($dogs as $dog)
-            <li>{{ $dog->name }} - {{ $dog->breed }} - {{ $dog->age }}</li>
+            <li><a href="{{ route('dogs.show', $dog->id) }}">{{ $dog->name }}</a> - {{ $dog->breed }} - {{ $dog->age }}</li>
         @endforeach
     </ul>
     <button><a href="{{route('dogs.create')}}">新規登録</a></button>
