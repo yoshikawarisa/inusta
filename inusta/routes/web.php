@@ -19,3 +19,4 @@ Route::get('/dogs/create', [DogsController::class, 'create'])->name('dogs.create
 Route::post('/dogs', [DogsController::class, 'store'])->name('dogs.store'); //登録のバック-処理の話
 Route::get('/dogs/{id}/edit', [DogsController::class, 'edit'])->name('dogs.edit');  //登録の画面の話
 Route::put('/dogs/{id}', [DogsController::class, 'update'])->name('dogs.update'); //登録のバック-処理の話
+Route::get('/dogs/{id}/show', [DogsController::class, 'show'])->name('dogs.show');  //登録の画面の話

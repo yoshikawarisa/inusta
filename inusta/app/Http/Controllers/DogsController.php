@@ -73,4 +73,10 @@ class DogsController extends Controller
         ]);
         return redirect()->route('dogs.index');
     }
+
+    public function show($id) //画面を出します(表示のみ)
+    {
+        $dog = Dog::find($id);
+        return view('dogs.show', compact('dog'));
+    }
 }
