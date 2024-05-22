@@ -44,4 +44,33 @@ class DogsController extends Controller
 
         return redirect()->route('dogs.index');
     }
+
+    public function edit($id)   //画面を出します(表示のみ)
+    {
+        $dog = Dog::find($id);
+        return view('dogs.edit', compact('dog'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'gender' => 'required|string',
+            'age' => 'required|integer',
+            'personality' => 'required|string|max:255',
+            'breed' => 'required|string|max:255',
+            'icon' => 'required|image|max:2048',
+        ]);
+
+        $dog = Dog::find($id);
+        $dog->update([
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'age' => $request->age,
+            'personality' => $request->personality,
+            'breed' => $request->breed,
+            'icon' => $request->file('icon') ? $request->file('icon')->store('dogs','public') : $dog->icon,
+        ]);
+        return redirect()->route('dogs.index');
+    }
 }
