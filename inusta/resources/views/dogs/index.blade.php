@@ -7,11 +7,13 @@
 </head>
 
 <body>
-    <h1>My Dogs</h1>
+    <h1>inusta</h1>
+    <h2>My Dogs</h2>
     <ul>
         @foreach($dogs as $dog)
             <li>{{ $dog->name }} - {{ $dog->breed }} - {{ $dog->age }}</li>
         @endforeach
     </ul>
+    <button><a href="{{route('dogs.create')}}">新規登録</a></button>
 </body>
 </html>
