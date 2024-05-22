@@ -13,6 +13,9 @@ Route::get('/login', [UsersController::class, 'loginForm'])->name('login');
 Route::post('/login', [UsersController::class, 'login'])->name('users.login'); 
 Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
 
+
 Route::get('/dogs/index', [DogsController::class, 'index'])->name('dogs.index'); //犬一覧
 Route::get('/dogs/create', [DogsController::class, 'create'])->name('dogs.create');
 Route::post('/dogs', [DogsController::class, 'store'])->name('dogs.store'); //登録のバック-処理の話
+Route::get('/dogs/{id}/edit', [DogsController::class, 'edit'])->name('dogs.edit');  //登録の画面の話
+Route::put('/dogs/{id}', [DogsController::class, 'update'])->name('dogs.update'); //登録のバック-処理の話
