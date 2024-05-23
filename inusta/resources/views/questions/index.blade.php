@@ -12,7 +12,7 @@
 
     <ul>
         @foreach($questions as $question)
-            <li><a href="{{ route('questions.show', $question->id) }}">{{ $question->title }}</a> - {{ $question->user->name }} - {{ $question->judgement }}</li>
+            <li><a href="{{ route('questions.show', $question->id) }}">{{ $question->title }}</a> - {{ $question->user->name }} - {{ $question->judgement ? 'はい' : 'いいえ' }}</li>
         @endforeach
     </ul>
     <button><a href="{{route('questions.create')}}">新規登録</a></button>
