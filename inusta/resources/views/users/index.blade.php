@@ -16,5 +16,6 @@
         <button type="submit">ログアウト</button>
     </form>
     <button><a href="{{route('dogs.index')}}">My Dogs</a></button>
+    <button><a href="{{route('questions.index')}}">Questions</a></button>
 </body>
 </html>
