@@ -12,6 +12,13 @@
     <h1>inusta</h1>
     <h2>Question 詳細</h2>
     <a href="{{ route('questions.edit', $question->id) }}">編集</a>
+    
+    <form action="{{ route('questions.destroy', $question->id) }}" method="POST" onsubmit="return confilm('本当に削除しますか？');">
+        @csrf
+        @method('DELETE')
+        <button type="submit">削除</button>
+    </form>
+
     <div>
         <p><strong>{{ $question->user->name }}</strong></p>
         <p><strong>タイトル:</strong> {{ $question->title }}</p>
