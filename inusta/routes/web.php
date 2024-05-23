@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DogsController;
 use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\QuestionCommentsController;
 
 Route::get('/', [UsersController::class, 'index'])->name('users.index');  //登録の画面の話
 Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');  //登録の画面の話
@@ -28,4 +29,6 @@ Route::post('/questions', [QuestionsController::class, 'store'])->name('question
 Route::get('/questions/{id}/show', [QuestionsController::class, 'show'])->name('questions.show');  //登録の画面の話
 Route::get('/questions/{id}/edit', [QuestionsController::class, 'edit'])->name('questions.edit');  //登録の画面の話
 Route::put('/questions/{id}', [QuestionsController::class, 'update'])->name('questions.update'); //登録のバック-処理の話
-Route::delete('/questions/{id}', [QuestionsController::class, 'destroy'])->name('questions.destroy');  //削除の話
+
+Route::post('/questions/{questionId}/comments', [QuestionCommentsController::class, 'store'])->name('question_comments.store'); 
+Route::delete('/comments/{id}', [QuestionCommentsController::class, 'destroy'])->name('question_comments.destroy');  //削除の話

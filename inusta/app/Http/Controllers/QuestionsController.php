@@ -40,7 +40,7 @@ class QuestionsController extends Controller
 
     public function show($id) //画面を出します(表示のみ)
     {
-        $question = Question::find($id);
+        $question = Question::with('user')->find($id);
         return view('questions.show', compact('question'));
     }
 
@@ -64,13 +64,6 @@ class QuestionsController extends Controller
             'text' => $request->text,
             'judgement' => $request->judgement,
         ]);
-        return redirect()->route('questions.index');
-    }
-
-    public function destroy($id)  
-    {
-        $question = Question::find($id);
-        $question->delete();
         return redirect()->route('questions.index');
     }
 }
