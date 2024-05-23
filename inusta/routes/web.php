@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DogsController;
+use App\Http\Controllers\QuestionsController;
 
 Route::get('/', [UsersController::class, 'index'])->name('users.index');  //登録の画面の話
 Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');  //登録の画面の話
@@ -20,3 +21,5 @@ Route::post('/dogs', [DogsController::class, 'store'])->name('dogs.store'); //�
 Route::get('/dogs/{id}/edit', [DogsController::class, 'edit'])->name('dogs.edit');  //登録の画面の話
 Route::put('/dogs/{id}', [DogsController::class, 'update'])->name('dogs.update'); //登録のバック-処理の話
 Route::get('/dogs/{id}/show', [DogsController::class, 'show'])->name('dogs.show');  //登録の画面の話
+
+Route::get('/questions/index', [QuestionsController::class, 'index'])->name('questions.index'); //質問一覧
