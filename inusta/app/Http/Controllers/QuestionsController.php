@@ -37,4 +37,10 @@ class QuestionsController extends Controller
 
         return redirect()->route('questions.index');
     }
+
+    public function show($id) //画面を出します(表示のみ)
+    {
+        $question = Question::find($id);
+        return view('questions.show', compact('question'));
+    }
 }
