@@ -26,3 +26,5 @@ Route::get('/questions/index', [QuestionsController::class, 'index'])->name('que
 Route::get('/questions/create', [QuestionsController::class, 'create'])->name('questions.create');
 Route::post('/questions', [QuestionsController::class, 'store'])->name('questions.store'); //登録のバック-処理の話
 Route::get('/questions/{id}/show', [QuestionsController::class, 'show'])->name('questions.show');  //登録の画面の話
+Route::get('/questions/{id}/edit', [QuestionsController::class, 'edit'])->name('questions.edit');  //登録の画面の話
+Route::put('/questions/{id}', [QuestionsController::class, 'update'])->name('questions.update'); //登録のバック-処理の話

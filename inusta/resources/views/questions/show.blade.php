@@ -11,12 +11,12 @@
 <body>
     <h1>inusta</h1>
     <h2>Question 詳細</h2>
-    <a href="">編集</a>
+    <a href="{{ route('questions.edit', $question->id) }}">編集</a>
     <div>
         <p><strong>{{ $question->user->name }}</strong></p>
         <p><strong>タイトル:</strong> {{ $question->title }}</p>
         <p><strong>本文:</strong> {{ $question->text }}</p>
-        <p><strong>解決済？:</strong> {{ $question->judgement }}</p>
+        <p><strong>解決済？:</strong> {{ $question->judgement ? 'はい' : 'いいえ' }}</p>
     </div>
 </body>
 </html>

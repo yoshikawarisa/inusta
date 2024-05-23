@@ -43,4 +43,27 @@ class QuestionsController extends Controller
         $question = Question::find($id);
         return view('questions.show', compact('question'));
     }
+
+    public function edit($id)   //画面を出します(表示のみ)
+    {
+        $question = Question::find($id);
+        return view('questions.edit', compact('question'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        $request->validate([
+            'title' => 'required|max:50',
+            'text' => 'required',
+            'judgement' => 'required|boolean',
+        ]);
+
+        $question = Question::findOrFail($id);
+        $question->update([
+            'title' => $request->title,
+            'text' => $request->text,
+            'judgement' => $request->judgement,
+        ]);
+        return redirect()->route('questions.index');
+    }
 }
