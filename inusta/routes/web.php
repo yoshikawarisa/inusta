@@ -25,3 +25,4 @@ Route::get('/dogs/{id}/show', [DogsController::class, 'show'])->name('dogs.show'
 Route::get('/questions/index', [QuestionsController::class, 'index'])->name('questions.index'); //質問一覧
 Route::get('/questions/create', [QuestionsController::class, 'create'])->name('questions.create');
 Route::post('/questions', [QuestionsController::class, 'store'])->name('questions.store'); //登録のバック-処理の話
+Route::get('/questions/{id}/show', [QuestionsController::class, 'show'])->name('questions.show');  //登録の画面の話
