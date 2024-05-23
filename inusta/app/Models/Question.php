@@ -15,8 +15,13 @@ class Question extends Model
     // 可変項目
     protected $fillable = ['title', 'text','user_id','judgement'];
 
-        public function user()
-        {
-            return $this->belongsTo(User::class); 
-        }
+    public function user()
+    {
+        return $this->belongsTo(User::class); 
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(QuestionComment::class); 
+    }
 }
