@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <h1>inusta</h1>
+    <h1><a href="{{ route('users.index') }}">inusta</a></h1>
     <h2>Qustions</h2>
 
     <ul>

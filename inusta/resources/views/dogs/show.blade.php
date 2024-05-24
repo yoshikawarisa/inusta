@@ -19,7 +19,7 @@
         <p><strong>性格:</strong> {{ $dog->personality }}</p>
         <p><strong>犬種:</strong> {{ $dog->breed }}</p>
         <p><strong>アイコン:</strong></p>
-        <img src="{{ asset('storage/' . $dog->icon) }}" alt="犬のアイコン">
+        <img src="{{ asset('storage/' . $dog->icon) }}" alt="犬のアイコン" style="width: 100px; height: auto;">
     </div>
 </body>
 </html>

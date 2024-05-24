@@ -37,4 +37,10 @@ class PostsController extends Controller
     }
 
 
+    public function show($id) //画面を出します(表示のみ)
+    {
+        $post = Post::with('user')->find($id);
+        return view('posts.show', compact('post'));
+    }
+
 }

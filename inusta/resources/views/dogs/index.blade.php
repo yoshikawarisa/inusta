@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <h1>inusta</h1>
+    <h1><a href="{{ route('users.index') }}">inusta</a></h1>
     <h2>My Dogs</h2>
     <ul>
         @foreach($dogs as $dog)
