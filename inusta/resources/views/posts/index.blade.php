@@ -12,9 +12,17 @@
 
     <ul>
         @foreach($posts as $post)
-            <li><a href="">{{ $post->text }}</a> - {{ $post->photo }}</li>
-        @endforeach
+        <li>
+            <a href="">{{ $post->text }}</a> - 
+            @if($post->photo)
+                <img src="{{ asset('storage/' . $post->photo) }}" style="width: 100px; height: auto;">
+            @else
+                <span>画像なし</span>
+            @endif
+        </li>
+    @endforeach
+    
     </ul>
-    <button><a href="">新規登録</a></button>
+    <button><a href="{{route('posts.create')}}">新規登録</a></button>
 </body>
 </html>

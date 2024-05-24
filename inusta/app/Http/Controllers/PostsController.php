@@ -16,4 +16,25 @@ class PostsController extends Controller
         return view('posts.index', ['posts' => $posts]);
     }
 
+    public function create()   //画面を出します(表示のみ)
+    {
+        return view('posts.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'text' => 'required|string|max:50',
+        ]);
+
+        $question = Post::create([
+            'text' => $request->text,
+            'photo' => $request->file('photo') ? $request->file('photo')->store('posts','public') : null,
+            'user_id' => auth()->id(),
+        ]);
+
+        return redirect()->route('posts.index');
+    }
+
+
 }

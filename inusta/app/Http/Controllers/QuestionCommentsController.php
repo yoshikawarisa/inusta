@@ -17,6 +17,7 @@ class QuestionCommentsController extends Controller
             'user_id' => auth()->id(),
             'question_id' => $questionId,
             'text' => $request->text,
+            'photo' => $request->text,
         ]);
 
         return redirect()->back();
