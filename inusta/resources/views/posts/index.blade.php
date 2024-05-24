@@ -7,13 +7,13 @@
 </head>
 
 <body>
-    <h1>inusta</h1>
+    <h1><a href="{{ route('users.index') }}">inusta</a></h1>
     <h2>Posts</h2>
 
     <ul>
         @foreach($posts as $post)
         <li>
-            <a href="">{{ $post->text }}</a> - 
+            <a href="{{ route('posts.show', $post->id) }}">{{ $post->text }}</a> - 
             @if($post->photo)
                 <img src="{{ asset('storage/' . $post->photo) }}" style="width: 100px; height: auto;">
             @else

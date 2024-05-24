@@ -26,8 +26,8 @@
         <label for="text">内容</label><br>
         <input type="text" id="text" name="text"><br>
 
-        <!-- 写真 -->
-        <label for="photo">写真:</label><br>
+        <!-- 画像 -->
+        <label for="photo">画像:</label><br>
         <input type="file" id="photo" name="photo"><br>
         
         <!-- 投稿ボタン -->

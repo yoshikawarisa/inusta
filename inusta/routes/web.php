@@ -41,3 +41,4 @@ Route::delete('/comments/{id}', [QuestionCommentsController::class, 'destroy'])-
 Route::get('/posts/index', [PostsController::class, 'index'])->name('posts.index'); //一覧
 Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostsController::class, 'store'])->name('posts.store'); //登録のバック-処理の話
+Route::get('/posts/{id}/show', [PostsController::class, 'show'])->name('posts.show');  //登録の画面の話
