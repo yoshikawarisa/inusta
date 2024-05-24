@@ -17,5 +17,6 @@
     </form>
     <button><a href="{{route('dogs.index')}}">My Dogs</a></button>
     <button><a href="{{route('questions.index')}}">Questions</a></button>
+    <button><a href="{{route('posts.index')}}">Post</a></button>
 </body>
 </html>
