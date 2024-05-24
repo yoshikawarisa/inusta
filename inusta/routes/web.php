@@ -5,6 +5,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DogsController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\QuestionCommentsController;
+use App\Http\Controllers\PostsController;
 
 Route::get('/', [UsersController::class, 'index'])->name('users.index');  //登録の画面の話
 Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');  //登録の画面の話
@@ -32,3 +33,5 @@ Route::put('/questions/{id}', [QuestionsController::class, 'update'])->name('que
 
 Route::post('/questions/{questionId}/comments', [QuestionCommentsController::class, 'store'])->name('question_comments.store'); 
 Route::delete('/comments/{id}', [QuestionCommentsController::class, 'destroy'])->name('question_comments.destroy');  //削除の話
+
+Route::get('/posts/index', [PostsController::class, 'index'])->name('posts.index'); //質問一覧
