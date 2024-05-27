@@ -47,7 +47,10 @@
 
         <!-- アイコン -->
         <label for="icon">アイコン:</label><br>
-        <input type="file" id="icon" name="icon" value="{{ $dog->icon }}"><br>
+        @if ($dog->icon)
+            <img src="{{ asset('storage/' . $dog->icon) }}" alt="Dog Icon" style="width: 100px; height: auto;"><br>
+        @endif
+        <input type="file" id="icon" name="icon"><br>
 
         <!-- 送信ボタン -->
         <input type="submit" value="更新">

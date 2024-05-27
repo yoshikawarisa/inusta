@@ -11,7 +11,7 @@
 <body>
     <h1>inusta</h1>
     <h2>Post 詳細</h2>
-    <a href="">編集</a>
+    <a href="{{ route('posts.edit', $post->id) }}">編集</a>
 
     <div>
         <p><strong>{{ $post->user->name }}</strong></p>

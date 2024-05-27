@@ -10,7 +10,10 @@
 
 <body>
     <h1><a href="{{ route('users.index') }}">inusta</a></h1>
+    @if ($user)
     <span>ようこそ、<a href="{{ route('users.edit', $user->id) }}">{{ Auth::user()->name }}</a>さん</span>
+    @endif
+
     <form action="{{ route('logout') }}" method="POST">
         @csrf
         <button type="submit">ログアウト</button>

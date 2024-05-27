@@ -14,7 +14,15 @@
     <a href="{{ route('dogs.edit', $dog->id) }}">編集</a>
     <div>
         <h3>{{ $dog->name }}</h3>
-        <p><strong>性別:</strong> {{ $dog->gender }}</p>
+        <p><strong>性別:</strong> 
+            @if ($dog->gender == 'female')
+                女の子
+            @elseif ($dog->gender == 'male')
+                男の子
+            @else
+                不明
+            @endif
+        </p>
         <p><strong>年齢:</strong> {{ $dog->age }}</p>
         <p><strong>性格:</strong> {{ $dog->personality }}</p>
         <p><strong>犬種:</strong> {{ $dog->breed }}</p>

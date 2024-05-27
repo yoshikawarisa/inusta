@@ -12,7 +12,17 @@
     <h1 class="title">inusta</h1>
     <h2 class="subTitle">Login</h2>
     
-    <form method="POST" action="">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    
+    <form method="POST" action="{{ route('users.login') }}">
         @csrf
 
         <div>

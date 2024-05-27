@@ -42,3 +42,5 @@ Route::get('/posts/index', [PostsController::class, 'index'])->name('posts.index
 Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostsController::class, 'store'])->name('posts.store'); //登録のバック-処理の話
 Route::get('/posts/{id}/show', [PostsController::class, 'show'])->name('posts.show');  //登録の画面の話
+Route::get('/posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edit');  //登録の画面の話
+Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update'); //登録のバック-処理の話
