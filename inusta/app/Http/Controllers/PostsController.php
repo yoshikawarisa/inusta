@@ -25,9 +25,10 @@ class PostsController extends Controller
     {
         $request->validate([
             'text' => 'required|string|max:50',
+            'photo' => 'nullable|image|max:2048',
         ]);
 
-        $question = Post::create([
+        Post::create([
             'text' => $request->text,
             'photo' => $request->file('photo') ? $request->file('photo')->store('posts','public') : null,
             'user_id' => auth()->id(),
@@ -43,4 +44,24 @@ class PostsController extends Controller
         return view('posts.show', compact('post'));
     }
 
+    public function edit($id)   //画面を出します(表示のみ)
+    {
+        $post = Post::find($id);
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        $request->validate([
+            'text' => 'required|max:50',
+            'photo' => 'nullable|image|max:2048',
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->update([
+            'text' => $request->text,
+            'photo' => $request->file('photo') ? $request->file('photo')->store('posts','public') : $post->photo,
+        ]);
+        return redirect()->route('posts.index');
+    }
 }

@@ -20,8 +20,17 @@
         <p><strong>解決済？:</strong> {{ $question->judgement ? 'はい' : 'いいえ' }}</p>
     </div>
 
-
     <h2>コメントを書く</h2>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('question_comments.store',$question->id) }}" method="POST">
         @csrf
         <label for="text">コメント:</label>

@@ -26,17 +26,25 @@ class UsersController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.required' => '名前を入力してください。',
+            'email.required' => 'メールアドレスを入力してください。',
+            'email.email' => '有効なメールアドレスを入力してください。',
+            'email.unique' => 'そのメールアドレスは既に使用されています。',
+            'password.required' => 'パスワードを入力してください。',
+            'password.min' => 'パスワードは少なくとも8文字である必要があります。',
+            'password.confirmed' => 'パスワードが確認用と一致しません。',
         ]);
-
+    
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
+    
         return redirect('/');
     }
-
+    
     public function edit()   //画面を出します(表示のみ)
     {
         $user = Auth::user();
@@ -51,16 +59,21 @@ class UsersController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8|confirmed',
+        ], [
+            'name.required' => '名前を入力してください。',
+            'email.required' => 'メールアドレスを入力してください。',
+            'email.email' => '有効なメールアドレスを入力してください。',
+            'email.unique' => 'そのメールアドレスは既に使用されています。',
+            'password.required' => 'パスワードを入力してください。',
+            'password.min' => 'パスワードは少なくとも8文字である必要があります。',
+            'password.confirmed' => 'パスワードが確認用と一致しません。',
         ]);
-
-        if(!empty($validatedData['password'])) {
-            $validatedData['password'] = Hash::make($validatedData['password']);
-        } else {
-            unset($validatedData['password']);
-        }
-
+        
+        $validatedData['password'] = !empty($validatedData['password']) ? Hash::make($validatedData['password']) : null;
+        
         $user->update($validatedData);
         return redirect()->route('users.index');
+        
     }
 
 
@@ -75,16 +88,19 @@ class UsersController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
-        if(Auth::attempt($validatedData)){
+    
+        $credentials = $request->only(['email', 'password']);
+    
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('/');
         }
-
-        return back()->withEroors([
-            'email' => '提供された認証情報は記録と一致しません。',
+    
+        return back()->withErrors([
+            'email' => '入力が間違っています。',
         ]);
     }
+    
 
     public function logout(Request $request)
     {
