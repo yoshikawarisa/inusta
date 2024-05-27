@@ -66,4 +66,12 @@ class QuestionsController extends Controller
         ]);
         return redirect()->route('questions.index');
     }
+
+    public function toggleStatus($id)
+    {
+        $question = Question::findOrFail($id);
+        $question->judgement = !$question->judgement;
+        $question->save();
+        return redirect()->route('questions.index');
+    }
 }

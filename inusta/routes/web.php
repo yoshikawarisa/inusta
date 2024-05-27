@@ -33,10 +33,12 @@ Route::post('/questions', [QuestionsController::class, 'store'])->name('question
 Route::get('/questions/{id}/show', [QuestionsController::class, 'show'])->name('questions.show');  //登録の画面の話
 Route::get('/questions/{id}/edit', [QuestionsController::class, 'edit'])->name('questions.edit');  //登録の画面の話
 Route::put('/questions/{id}', [QuestionsController::class, 'update'])->name('questions.update'); //登録のバック-処理の話
+Route::post('/questions/{id}/toggle-status', [QuestionsController::class, 'toggleStatus'])->name('questions.toggleStatus'); //
 
 //質問ーコメント機能
 Route::post('/questions/{questionId}/comments', [QuestionCommentsController::class, 'store'])->name('question_comments.store'); 
-Route::delete('/comments/{id}', [QuestionCommentsController::class, 'destroy'])->name('question_comments.destroy');  //削除の話
+Route::delete('/question-comments/{comment}', 'QuestionCommentController@destroy')->name('question_comments.destroy');
+
 
 //投稿機能
 Route::get('/posts/index', [PostsController::class, 'index'])->name('posts.index'); //一覧

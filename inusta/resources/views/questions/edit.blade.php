@@ -31,13 +31,7 @@
 
         <!-- 本文-->
         <label for="text">本文:</label><br>
-        <input type="text" id="text" name="text" value="{{ $question->text }}"><br>
-
-        <!-- 解決判定 -->
-        <label for="judgement">解決済？:</label><br>
-        <select name="judgement" id="judgement">
-            <option value="0" @if(!$question->judgement) selected @endif>いいえ</option>
-            <option value="1" @if($question->judgement) selected @endif>はい</option>
+        <input type="text" id="text" name="text" value="{{ $question->text }}"><br><br>
 
         <!-- 更新ボタン -->
         <input type="submit" value="更新">
