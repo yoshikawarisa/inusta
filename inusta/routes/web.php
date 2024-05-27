@@ -6,6 +6,7 @@ use App\Http\Controllers\DogsController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\QuestionCommentsController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\PostCommentsController;
 
 //ユーザー機能
 Route::get('/', [UsersController::class, 'index'])->name('users.index');  //登録の画面の話
@@ -44,3 +45,7 @@ Route::post('/posts', [PostsController::class, 'store'])->name('posts.store'); /
 Route::get('/posts/{id}/show', [PostsController::class, 'show'])->name('posts.show');  //登録の画面の話
 Route::get('/posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edit');  //登録の画面の話
 Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update'); //登録のバック-処理の話
+
+//投稿ーコメント機能
+Route::post('/posts/{postId}/comments', [PostCommentsController::class, 'store'])->name('post_comments.store'); 
+Route::delete('/comments/{id}', [PostCommentsController::class, 'destroy'])->name('post_comments.destroy');  //削除の話

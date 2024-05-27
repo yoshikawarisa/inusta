@@ -23,5 +23,42 @@
         <span>なし</span>
         @endif
     </div>
+
+    <h3>コメントを書く</h3>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('post_comments.store',$post->id) }}" method="POST">
+        @csrf
+        <label for="text">コメント:</label>
+        <textarea name="text" id="text"></textarea>
+        <button type="submit">投稿</button>
+    </form>
+
+    <br><br>
+    <h4>コメント一覧</h4> 
+    @foreach ($post->comments()->get() as $comment)
+        <p>{{$comment->text}}</p>
+        <form action="{{ route('post_comments.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
+            @csrf
+            @method('DELETE')
+            <button type="submit">削除</button>
+        </form>
+    @endforeach
+    
+    @if ($post->comments()->count() === 0)
+        <p>コメントはありません。</p>
+    @endif
+    
+    
+
+
 </body>
 </html>
