@@ -12,7 +12,16 @@
 
     <ul>
         @foreach($questions as $question)
-            <li><a href="{{ route('questions.show', $question->id) }}">{{ $question->title }}</a> - {{ $question->user->name }} - {{ $question->judgement ? 'はい' : 'いいえ' }}</li>
+            <li>
+                <a href="{{ route('questions.show', $question->id) }}">{{ $question->title }}</a>
+                {{ $question->user->name }}
+                <form action="{{route('questions.toggleStatus', $question->id) }}" method="POST">
+                    @csrf
+                    <button type="submit">
+                        {{$question->judgement ? '解決済' : '未解決' }}
+                    </button>
+                </form>
+            </li>
         @endforeach
     </ul>
     <button><a href="{{route('questions.create')}}">新規登録</a></button>
