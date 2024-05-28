@@ -25,4 +25,9 @@ class Post extends Model
     {
         return $this->hasMany(PostComment::class);
     }
+
+    public function bookmarkedBy() 
+    {
+        return $this->belongsToMany(User::class, 'bookmarks')->withTimestamps();
+    }
 }
