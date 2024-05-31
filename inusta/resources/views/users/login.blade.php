@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <h1 class="title">inusta</h1>
-    <h2 class="subTitle">Login</h2>
+    <br><br><br><br><br><br>
+    <h1 class="text-gradient" style="text-align: center;">inusta</h1>
     
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -25,20 +25,18 @@
     <form method="POST" action="{{ route('users.login') }}">
         @csrf
 
-        <div>
-            <label for="email">メールアドレス</label>
-            <input id="email" type="email" name="email" required autofocus>
-        </div>
+        <div class="login1" style="text-align: center;">
+            <input type="email" id="email" name="email" value="" placeholder="メールアドレス" >
+            <br><br><br>
 
-        <div>
-            <label for="password">パスワード</label>
-            <input id="password" type="password" name="password" required>
-        </div>
+            <input type="password" id="password" name="password"  value="" placeholder="パスワード" ><br><br><br>
 
-        <div>
-            <button type="submit">ログイン</button>
+            <button class="c-btn circle" type="submit" style="font-size: 20px;">ログイン</button>
+<br><br><br><br><br>
         </div>
     </form>
-    <button><a href="{{route('users.create')}}">新規ユーザーはこちらから！</a></button>
+    <p class="new">　　初めての方はこちら　　
+        <button class="c-btn circle" style="font-size: 20px" onclick="window.location='{{ route('users.create') }}' ">新規登録</button>
+    </p>
 </body>
 </html>

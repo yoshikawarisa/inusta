@@ -9,16 +9,38 @@
 </head>
 
 <body>
-    <h1>inusta</h1>
-    <h2>Question 詳細</h2>
-    <a href="{{ route('questions.edit', $question->id) }}">編集</a>
+    <h1 class="text-gradient" style="text-align:"><a href="{{ route('questions.index') }}" style="text-decoration: none; color: inherit;">inusta</a></h1>
+        </h1>
+        <h2 style="display: inline-block; text-align: left; margin: 0; vertical-align: top;"> Question　　　　　</h2>
+        <button class="c-btn circle" style="font-size: 25px; color: #5e44449f" vertical-align: top;" onclick="window.location='{{ route('questions.edit', $question->id) }}'">編集→</button><br><br>
 
-    <div>
-        <p><strong>{{ $question->user->name }}</strong></p>
-        <p><strong>タイトル:</strong> {{ $question->title }}</p>
-        <p><strong>本文:</strong> {{ $question->text }}</p>
-        <p><strong>解決済？:</strong> {{ $question->judgement ? 'はい' : 'いいえ' }}</p>
-    </div>
+
+        <ul style="text-align: right;">
+            <li style="display: inline-block; margin: 0 30px; position: relative;">
+                <div class="question-container">
+                    @if($question->judgement)
+                        <span class="resolved-mark">解決</span>
+                    @endif
+                    <div><strong>{{$question->title}}</strong></div><br>
+                    <!-- Displaying the title -->
+                    <div style="position: absolute; top: -40px; left: 0;">{{$question->user->name}}</div>
+                    <form action="{{ route('questions.toggleStatus', $question->id) }}" method="POST">
+                        @csrf
+                        {{ $question->text }}<br> <!-- Displaying the text -->
+                        <div class="button-container1">
+                            <button type="submit" style="border: none; color: #ff711e9f;">
+                                {{ $question->judgement ? '解決済' : '未解決' }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+        
+
+
+
+
+
+
 
     <h2>コメントを書く</h2>
     @if ($errors->any())

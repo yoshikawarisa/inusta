@@ -9,56 +9,72 @@
 </head>
 
 <body>
-    <h1>inusta</h1>
-    <h2>Post 詳細</h2>
-    <a href="{{ route('posts.edit', $post->id) }}">編集</a>
+        <h1 class="text-gradient" style="text-align:"><a href="{{ route('posts.index') }}" style="text-decoration: none; color: inherit;">inusta</a></h1>
+        </h1>
+        <h2 style="display: inline-block; text-align: left; margin: 0; vertical-align: top;"> Post　　　　　</h2>
+        <button class="c-btn circle" style="font-size: 25px; color: #5e44449f" vertical-align: top;" onclick="window.location='{{ route('posts.edit', $post->id) }}'">編集→</button><br><br>
 
-    <div>
-        <p><strong>{{ $post->user->name }}</strong></p>
-        <p><strong>内容:</strong> {{ $post->text }}</p>
-        <p><strong>画像:</strong> </p>
+    <div class="post">
+        <h2>{{ $post->user->name }}</h2>
+        <p> {{ $post->text }}</p>
         @if($post->photo)
-        <img src="{{ asset('storage/' . $post->photo) }}" style="width: 100px; height: auto;">
+        <img src="{{ asset('storage/' . $post->photo) }}" style="width: 300px; height: 300px; object-fit: cover; border-radius: 8px;">
         @else
         <span>なし</span>
         @endif
     </div>
 
-    <h3>コメントを書く</h3>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 
-    <form action="{{ route('post_comments.store',$post->id) }}" method="POST">
-        @csrf
-        <label for="text">コメント:</label>
-        <textarea name="text" id="text"></textarea>
-        <button type="submit">投稿</button>
-    </form>
+    
+    <h3 style="margin-bottom: 20px; padding: 15px; border-radius: 10px; color: #ff711e9f; background-color: #f0f0f0;">
 
-    <br><br>
-    <h4>コメント一覧</h4> 
-    @foreach ($post->comments()->get() as $comment)
-        <p>{{$comment->text}}</p>
-        <form action="{{ route('post_comments.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
+        コメント
+
+        <form action="{{ route('post_comments.store', $post->id) }}" method="POST">
             @csrf
-            @method('DELETE')
-            <button type="submit">削除</button>
+            <div class="login1" style="text-align: center;">
+                <textarea id="text" name="text" class="ed-input" rows="1" cols="20"></textarea>
+            </div>
+            <br>
+        
+            <div class="login1" style="text-align: center; font-size: 20px;">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <button type="submit" style="color: #ff711e9f; font-size: 20px; border: none; background: none;">送信</button>
+            </div>
         </form>
-    @endforeach
-    
-    @if ($post->comments()->count() === 0)
-        <p>コメントはありません。</p>
-    @endif
-    
+    </h3>
     
 
-
+    <br>
+    <h4 style="color: #ff711e9f; font-size: 20px;">
+        コメント一覧
+    </h4>
+    
+    <h5 style="margin-bottom: 20px; padding: 15px; border-radius: 10px; color: #0000009f; background-color: #f0f0f0;">
+        @foreach ($post->comments()->get() as $comment)
+            <div style="display: flex; align-items: center;">
+                <p style="flex: 1;">{{$comment->text}}</p>
+                <form action="{{ route('post_comments.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" style="color: #ff711e9f; font-size: 15px; border: none; background: none; margin-left: 10px;">削除</button>
+                </form>
+            </div>
+            <br><br>
+        @endforeach
+        
+        @if ($post->comments()->count() === 0)
+            <p>まだコメントはありません</p>
+        @endif
+    </h5>
+    
 </body>
 </html>

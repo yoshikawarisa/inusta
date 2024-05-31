@@ -58,7 +58,7 @@ class UsersController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'password' => 'nullable|string|min:8|confirmed',
+            'password' => 'required|string|min:8|confirmed',
         ], [
             'name.required' => '名前を入力してください。',
             'email.required' => 'メールアドレスを入力してください。',

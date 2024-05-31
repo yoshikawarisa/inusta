@@ -24,4 +24,13 @@ class Question extends Model
     {
         return $this->hasMany(QuestionComment::class); 
     }
+
+public function toggleStatus($id)
+{
+    $question = Question::findOrFail($id);
+    $question->judgement = !$question->judgement;
+    $question->save();
+    return redirect()->back(); // リクエストが発生したページにリダイレクト
+}
+
 }

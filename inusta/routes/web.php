@@ -9,11 +9,11 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\BookmarksController;
 
+//authの（）内は、ログインしないと使えない機能。
+
 Route::middleware(['auth'])->group(function(){
     //ユーザー機能
     Route::get('/', [UsersController::class, 'index'])->name('users.index');  //登録の画面の話
-    Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');  //登録の画面の話
-    Route::post('/users', [UsersController::class, 'store'])->name('users.store'); //登録のバック-処理の話
     Route::get('/users/edit', [UsersController::class, 'edit'])->name('users.edit');  //登録の画面の話
     Route::put('/users', [UsersController::class, 'update'])->name('users.update'); //登録のバック-処理の話
     Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
@@ -52,7 +52,8 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/comments/{id}', [PostCommentsController::class, 'destroy'])->name('post_comments.destroy');  //削除の話
 });
 
-
+Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');  //登録の画面の話
+Route::post('/users', [UsersController::class, 'store'])->name('users.store'); //登録のバック-処理の話
 Route::get('/login', [UsersController::class, 'loginForm'])->name('login');
 Route::post('/login', [UsersController::class, 'login'])->name('users.login'); 
 

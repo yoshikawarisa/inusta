@@ -9,25 +9,44 @@
 </head>
 
 <body>
-    <h1>inusta</h1>
-    <h2>My Dog 詳細</h2>
-    <a href="{{ route('dogs.edit', $dog->id) }}">編集</a>
-    <div>
-        <h3>{{ $dog->name }}</h3>
-        <p><strong>性別:</strong> 
-            @if ($dog->gender == 'female')
-                女の子
-            @elseif ($dog->gender == 'male')
-                男の子
-            @else
-                不明
-            @endif
-        </p>
-        <p><strong>年齢:</strong> {{ $dog->age }}</p>
-        <p><strong>性格:</strong> {{ $dog->personality }}</p>
-        <p><strong>犬種:</strong> {{ $dog->breed }}</p>
-        <p><strong>アイコン:</strong></p>
-        <img src="{{ asset('storage/' . $dog->icon) }}" alt="犬のアイコン" style="width: 100px; height: auto;">
+    <h1 class="text-gradient" style="text-align:"><a href="{{ route('dogs.index') }}" style="text-decoration: none; color: inherit;">inusta</a></h1>
+
+    <div style="display: inline-block; vertical-align: top;">
+        <div style="text-align: center;">
+            <h2 style="display: inline-block; text-align: left; margin: 0; vertical-align: top;">My Dog　　　</h2>
+            <br><br>
+            <a style="font-size: 25px; vertical-align: top; text-decoration: none; color:#d86565f1;">　　　　　　{{ $dog->name }}</a>
+        </div>
+        
+    </div><br><br><br>
+
+    
+    <div style="display: flex; justify-content: center;">
+        <img src="{{ asset('storage/' . $dog->icon) }}" alt="犬のアイコン" style="width: 200px; height: 200px; border-radius: 50%;">
     </div>
+    <br><br>
+
+    <div style="text-align: center; color: #d86565f1; font-size: 25px;">
+        @if ($dog->gender == 'female')
+            <p style="display: inline-block; margin: 0;">女の子</p>
+        @elseif ($dog->gender == 'male')
+            <p style="display: inline-block; margin: 0;">男の子</p>
+        @else
+            <p style="display: inline-block; margin: 0;">不明</p>
+        @endif
+        　　　<p style="display: inline-block; margin: 0;">{{ $dog->age }}歳</p>
+        <br><br><br>
+    
+        <p style="display: inline-block; margin: 0;">{{ $dog->personality }}</p>
+        <p style="display: inline-block; margin: 0;">　　{{ $dog->breed }}</p>
+        <br>
+    </div>    
+    
+    <br><br>
+    <div style="text-align: right;">
+        <button class="c-btn circle" style="font-size: 25px; color: #5e44449f;" onclick="window.location='{{ route('dogs.edit', $dog->id) }}'">編集</button>
+    </div>
+    
+
 </body>
 </html>

@@ -55,14 +55,13 @@ class QuestionsController extends Controller
         $request->validate([
             'title' => 'required|max:50',
             'text' => 'required',
-            'judgement' => 'required|boolean',
+            'judgement' => 'boolean',
         ]);
 
         $question = Question::findOrFail($id);
         $question->update([
             'title' => $request->title,
             'text' => $request->text,
-            'judgement' => $request->judgement,
         ]);
         return redirect()->route('questions.index');
     }

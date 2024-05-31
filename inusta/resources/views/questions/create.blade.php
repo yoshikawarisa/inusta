@@ -9,8 +9,10 @@
 </head>
 
 <body>
-    <h1>inusta</h1>
-    <h2>Questions 登録フォーム</h2>
+    <h1 class="text-gradient" style="text-align:"><a href="{{ route('questions.index') }}" style="text-decoration: none; color: inherit;">inusta</a></h1>
+    <div style="display: inline-block; vertical-align: top;">
+        <h2 style="display: inline-block; text-align: left; margin: 0; vertical-align: top;">Question　　　 新規作成</h2>
+        <br><br>
     @if($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -23,16 +25,29 @@
     <form action="{{ route('questions.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <!-- タイトル -->
-        <label for="title">タイトル:</label><br>
-        <input type="text" id="title" name="title"><br>
+        <p>タイトル</p>
+        <div class="login1" style="text-align: center;">
+            <input type="text" id="title" name="title" value="" class="ed-input">
+            <br>
+        </div><br>
+
 
         <!-- 本文 -->
-        <label for="text">本文:</label><br>
-        <input type="text" id="text" name="text"><br>
+        <p>本文</p>
+        <div class="login1" style="text-align: center;">
+            <textarea id="text" name="text" class="ed-input" rows="6" cols="30"></textarea>
+            <br>
+        </div>
+
+        <br>
 
         <!-- 登録ボタン -->
-        <input type="submit" value="登録">
+        <div class="login1" style="text-align: center; font-size: 40px;">　
+            <button class="ed1 circle" type="submit">投稿</button>
+            <br><br>
+        </div>
     </form>
+    
     
 </body>
 </html>

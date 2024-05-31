@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <h1>inusta</h1>
-    <h2>新規ユーザー登録</h2>
+    <h1 class="text-gradient" style="text-align:">inusta</h1>
+    <h2>新規登録</h2><br>
     @if($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -23,24 +23,34 @@
     <form action="{{ route('users.store') }}" method="post">
         @csrf
         <!-- 名前 -->
-        <label for="name">名前:</label><br>
-        <input type="text" id="name" name="name"><br>
+        <div class="login1" style="text-align: center;">
+            <input type="text" id="name" name="name" value="" placeholder="名前" class="ed-input">
+            <br><br>
+        </div>
     
         <!-- メールアドレス -->
-        <label for="email">メールアドレス:</label><br>
-        <input type="email" id="email" name="email"><br>
-    
+        <div class="login1" style="text-align: center;">
+            <input type="email" id="email" name="email" value="" placeholder="メールアドレス" class="ed-input">
+            <br><br>
+        </div>
+        
         <!-- パスワード -->
-        <label for="password">パスワード:</label><br>
-        <input type="password" id="password" name="password"><br>
-    
+        <div class="login1" style="text-align: center;">
+            <input type="password" id="password" name="password" value="" placeholder="パスワード" class="ed-input">
+            <br><br>
+        </div>
+        
         <!-- パスワード（確認） -->
-        <label for="password_confirmation">パスワード（確認）:</label><br>
-        <input type="password" id="password_confirmation" name="password_confirmation"><br><br>
-    
-        <!-- 送信ボタン -->
-        <input type="submit" value="登録">
+        <div class="login1" style="text-align: center;">
+            <input type="password" id="password_confirmation" name="password_confirmation" value="" placeholder="パスワード（確認）" class="ed-input">
+            <br><br>
+        </div>
+        
+        <!-- 登録ボタン -->
+        <div class="login1" style="text-align: center;">
+            <button class="ed1 circle" type="submit">登録</button>
+            <br><br>
+        </div>
     </form>
-    
 </body>
 </html>

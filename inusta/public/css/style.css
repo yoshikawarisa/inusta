@@ -1,6 +1,231 @@
-.title {
-	margin: 2em auto;
-	padding:2em;/*内側余白*/
-	border-radius: 30px 60px/60px 30px;
-	border: solid 8px #ccc7be;
+:root {
+	--color1: #edb658;
+	--color2: #e7719b;
 }
+
+.text-gradient {
+	font-size: 10vw;
+	font-weight: 600;
+	font-family: Avenir, sans-sarif;
+	color: var(--color1);
+	background: linear-gradient(45deg, var(--color1), var(--color2));
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	position: relative;
+	padding: 0.25em 0;
+	line-height: 2.0; 
+}
+
+h1:after {
+	content: "";
+	display: block;
+	height: 4px;
+	background: -webkit-linear-gradient(to right, rgb(115, 246, 255), #ffb2b2);
+	background: linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
+}
+
+.ed-input {
+    display: block;
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto; /* 上下の余白を追加して中央揃え */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.ed1 {
+    font-size: 20px;
+}
+
+.ed3 {
+	display: flex; /* 親要素をフレックスボックスにする */
+	justify-content: center; /* 中央に配置 */
+	text-align: center; /* 中央揃え */
+}
+
+.login1 input[type="email"],
+.login1 input[type="password"],
+.ed3 input[type="text"],
+.ed3 input[type="email"],
+.ed3 input[type="password"]{
+	width: 80%; /* 入力フィールドの横幅を100%に */
+	padding: 10px; /* 入力フィールドの内側の余白 */
+	margin-bottom: 10px; /* 入力フィールドの下に余白を追加 */
+	border: 1px solid #ccc; /* 入力フィールドの枠線 */
+	border-radius: 5px; /* 入力フィールドの角を丸くする */
+}
+
+.c-btn, .c-links, .ed1 {
+	background: #fff;
+	color: #ff711e9f;
+	overflow: hidden;
+	position: relative;
+	transition-duration: .4s;
+	z-index: 2;
+	border: none; /* ボーダーを無効にする */
+}
+
+
+.c-btn::after, .c-links::after, .ed1::after {
+	background: #ff711e9f;
+	border-radius: 50%;
+	content: "";
+	display: block;
+	margin: auto;
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	width: 100%;
+	padding-top: 100%;
+	height: 0;
+	z-index: -1;
+	transform: translateY(-50%) scale(0.1);
+	transition: opacity .5s, transform 0s;
+	transition-delay: 0s, .4s;
+}
+
+.c-btn:hover, .c-links, .ed1:hover {
+	color: #fff;
+}
+
+
+.c-btn:hover::after, .c-links, .ed1:hover::after {
+	opacity: 1;
+	transform: translateY(-50%) scale(1.1);
+	transition-delay: 0s;
+	transition: opacity .8s, transform .6s ease-in-out;
+}
+
+.new {
+    color: #999; /* 薄い灰色の文字色 */
+}
+
+h2 {
+	color: #ff711e9f; 
+}
+
+.login1 .ed1 {
+    font-size: 30px;
+}
+
+
+        .p01 {
+            font-family:sans-serif;
+            background-color: #f5f8fa;
+            margin: 0;
+            padding: 0;
+        }
+		
+/* スマホ画面みたいにスライドさせるようになる */
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+		
+		/* 枠線 */
+        .post {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .post-header h2 {
+            margin: 0;
+        }
+        .post-content {
+            margin-bottom: 10px;
+        }
+        .post-image {
+			width: 300px; /* 画像の幅を指定 */
+			height: 300px; /* 画像の高さを指定 */
+			object-fit: cover; /* 画像を均等に収めるように指定 */
+			border-radius: 8px; /* 画像の角を丸める */
+        }
+		
+        .like-button {
+            color: #5e44449f;
+            cursor: pointer;
+        }
+        .like-button:hover {
+            color: #ff0000;
+        }
+        .liked {
+            color: #ff0000;
+        }
+
+		.post-list {
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		.resolved-mark {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+			position:right; /* 絶対位置指定 */
+            top: 0; /* 上端からの距離 */
+            right: 0; /* 右端からの距離 */
+            background-color: rgba(227, 101, 101, 0.437);
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            font-size: 20px;
+        }
+
+		.question-container {
+			position: relative;
+			display: inline-block;
+			background-color: #f0f0f0;
+			padding: 45px;
+			border-radius: 35px;
+			margin-bottom: 20px;
+			text-align: left;
+			max-width: 80%;
+		}
+		
+		.question-container::before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: -15px; /* 左側に移動 */
+			transform: translateY(-50%);
+			width: 15px; /* 吹き出しの幅 */
+			height: 20px; /* 吹き出しの高さ */
+			background-color: #f0f0f0; /* 吹き出しの色 */
+			border-radius: 50%; /* 丸みを持たせる */
+		}
+		
+		
+		
+        
+        .question-header {
+			position: absolute; /* 追加 */
+			top: 50%; /* 追加 */
+			left: -100px; /* 追加 */
+			transform: translateY(-50%); /* 追加 */
+            font-size: 1.2rem; /* 見出しのフォントサイズ */
+            font-weight: bold; /* 見出しの太字 */
+            margin-bottom: 10px; /* 見出しの下部の余白 */
+        }
+
+		.button-container1 {
+            text-align: right; /* ボタンを右寄せにする */
+        }
+
+		

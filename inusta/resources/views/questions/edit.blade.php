@@ -8,8 +8,9 @@
 </head>
 
 <body>
-    <h1>inusta</h1>
-    <h2>Question 編集</h2>
+    <h1 class="text-gradient" style="text-align:"><a href="{{ route('questions.index') }}" style="text-decoration: none; color: inherit;">inusta</a></h1>
+    <div style="display: inline-block; vertical-align: top;">
+        <h2 style="display: inline-block; text-align: left; margin: 0; vertical-align: top;">Question　　　　　編集</h2>
     @if($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -19,22 +20,32 @@
             @endforeach
         </ul>
     @endif
+    <br> <br>
+
     <form action="{{ route('questions.update', $question->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <!-- 名前 -->
         <p><strong>{{ $question->user->name }}</strong></p>
+        <br>
 
         <!-- タイトル -->
-        <label for="title">タイトル:</label><br>
-        <input type="text" id="title" name="title" value="{{ $question->title }}"><br>
+        <p>タイトル</p>
+        <div class="login1" style="text-align: center;">
+            <input type="text" id="title" name="title" value="{{ $question->title }}" class="ed-input">
+            <br>
+        </div>
 
         <!-- 本文-->
-        <label for="text">本文:</label><br>
-        <input type="text" id="text" name="text" value="{{ $question->text }}"><br><br>
+        <p>本文</p>
+        <div class="login1" style="text-align: center;">
+            <textarea id="text" name="text" class="ed-input" rows="6" cols="30">{{ $question->text }}</textarea>
+        </div>
+        <br><br>
 
-        <!-- 更新ボタン -->
-        <input type="submit" value="更新">
+        <!-- 完了ボタン -->
+        <div class="login1" style="text-align: center;">
+            <button class="ed1 circle" type="submit">完了</button>
     </form>
 </body>
 </html>
